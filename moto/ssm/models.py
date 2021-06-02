@@ -256,11 +256,11 @@ class Command(BaseModel):
         self.status_details = "Details placeholder"
 
         self.requested_date_time = datetime.datetime.now()
-        self.requested_date_time_iso = self.requested_date_time.isoformat()
+        self.requested_date_time_iso = self.requested_date_time.astimezone().isoformat()
         expires_after = self.requested_date_time + datetime.timedelta(
             0, timeout_seconds
         )
-        self.expires_after = expires_after.isoformat()
+        self.expires_after = expires_after.astimezone().isoformat()
 
         self.comment = comment
         self.document_name = document_name
@@ -349,7 +349,7 @@ class Command(BaseModel):
             "ResponseCode": 0,
             "ExecutionStartDateTime": self.requested_date_time_iso,
             "ExecutionElapsedTime": elapsed_time_iso,
-            "ExecutionEndDateTime": end_time.isoformat(),
+            "ExecutionEndDateTime": end_time.astimezone().isoformat(),
             "Status": "Success",
             "StatusDetails": "Success",
             "StandardOutputContent": "",
