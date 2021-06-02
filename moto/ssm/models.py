@@ -1414,6 +1414,9 @@ class SimpleSystemManagerBackend(BaseBackend):
 
         return {"Commands": [command.response_object() for command in commands]}
 
+    def cancel_command(self, **kwargs):
+        return {}
+
     def get_command_by_id(self, id):
         command = next(
             (command for command in self._commands if command.command_id == id), None

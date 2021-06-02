@@ -325,6 +325,9 @@ class SimpleSystemManagerResponse(BaseResponse):
     def list_commands(self):
         return json.dumps(self.ssm_backend.list_commands(**self.request_params))
 
+    def cancel_command(self):
+        return json.dumps(self.ssm_backend.cancel_command(**self.request_params))
+
     def get_command_invocation(self):
         return json.dumps(
             self.ssm_backend.get_command_invocation(**self.request_params)
